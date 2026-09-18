@@ -1,4 +1,5 @@
-# Exercicio-3-Moblie
+# Exercício 3 - Mobile
+
 # Pedra, Papel e Tesoura
 
 ## MainActivity.java
@@ -28,11 +29,23 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        ViewCompat.setOnApplyWindowInsetsListener(
+                findViewById(R.id.main),
+                (v, insets) -> {
+                    Insets systemBars = insets.getInsets(
+                            WindowInsetsCompat.Type.systemBars()
+                    );
+
+                    v.setPadding(
+                            systemBars.left,
+                            systemBars.top,
+                            systemBars.right,
+                            systemBars.bottom
+                    );
+
+                    return insets;
+                }
+        );
     }
 
     public void selecionarPedra(View view) {
@@ -58,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         String escolhaApp = opcoes[numeroAleatorio];
 
         switch (escolhaApp) {
+
             case "pedra":
                 imagemApp.setImageResource(R.drawable.pedra);
                 break;
@@ -98,9 +112,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-´´´
-activity_main.xml
+```
+
+## activity_main.xml
+
+```xml
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -154,43 +172,44 @@ activity_main.xml
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/padrao"
         app:layout_constraintTop_toBottomOf="@id/textView2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="102dp"
         android:layout_height="98dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="150dp"
         android:onClick="selecionarPedra"
         app:srcCompat="@drawable/pedra"
         app:layout_constraintTop_toBottomOf="@id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="150dp"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="96dp"
         android:layout_height="96dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="25dp"
         android:onClick="selecionarPapel"
         app:srcCompat="@drawable/papel"
         app:layout_constraintTop_toBottomOf="@id/textView4"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="93dp"
         android:layout_height="97dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
         android:onClick="selecionarTesoura"
         app:srcCompat="@drawable/tesoura"
         app:layout_constraintTop_toBottomOf="@id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+```
